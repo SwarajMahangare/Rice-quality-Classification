@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Type Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌾 Rice Type Analysis 🌾</h1>
+        <form id="riceForm">
+            <div class="form-group">
+                <label for="type">Select Rice Type:</label>
+                <select id="type" name="type" required>
+                    <option value="" disabled selected>Choose a type</option>
+                    <option value="basmati">Basmati</option>
+                    <option value="mother india">Mother India</option>
+                    <option value="ysr">YSR</option>
+                    <option value="shela">Shela</option>
+                    <option value="indrayani">Indrayani</option>
+                    <option value="colamb">Colamb</option>
+                </select>
+            </div>
+            <button type="submit">Analyze Features</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('riceForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form submission
+            
+            // Capture selected value
+            const riceType = document.getElementById('type').value;
+            
+            // Data for rice types
+            const riceData = {
+                "basmati": { color: "White", texture: "Rough", length: "Big" },
+                "mother india": { color: "White", texture: "Soft", length: "Small" },
+                "ysr": { color: "Brown", texture: "Rough", length: "Small" },
+                "shela": { color: "Brown", texture: "Rough", length: "Big" },
+                "indrayani": { color: "White", texture: "Rough", length: "Medium" },
+                "colamb": { color: "White", texture: "Soft", length: "Medium" }
+            };
+            
+            // Get the data for the selected type
+            const result = riceData[riceType];
+            
+            // Display the result
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p>🌈 <strong>Color:</strong> ${result.color}</p>
+                <p>🧵 <strong>Texture:</strong> ${result.texture}</p>
+                <p>📏 <strong>Length:</strong> ${result.length}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
